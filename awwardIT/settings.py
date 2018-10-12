@@ -28,11 +28,21 @@ DEBUG = True
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'home'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 
 # Application definition
 
 INSTALLED_APPS = [
     'bootstrap4',
+    'bootstrap3',
+    'rest_framework.authtoken',
+    'tinymce',
+    'rest_framework',
     'awward.apps.AwwardConfig',
     'django.contrib.admin',
     'django.contrib.auth',

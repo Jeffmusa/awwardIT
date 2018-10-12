@@ -2,9 +2,16 @@ from django.conf.urls import url,include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns=[
-    url(r'^$',views.home,name='home')
+    url(r'^$',views.home,name='home'),
+    url(r'^profile/',views.profile,name = 'profile'),
+    url(r'^upload/', views.upload, name='upload'),
+    url(r'^api/profile/$', views.ProfileList.as_view()),
+    url(r'^api/projects/$', views.ProjectList.as_view()),
+    url(r'api/projects/merch-id/(?P<pk>[0-9]+)/$',views.ProjectDescription.as_view()),
+    url(r'api/profile/merch-id/(?P<pk>[0-9]+)/$',views.ProfileDescription.as_view()),
 ]
 
 if settings.DEBUG:

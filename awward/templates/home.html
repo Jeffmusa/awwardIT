@@ -1,5 +1,15 @@
-{%extends 'base.html'%} {% load bootstrap4 %}{{block.super}} {% block content %}
-<div class="card">
-<h1 class="text-center">~~~~~~~~~~~~~~~HAWKWARDS~~~~~~~~~~~</h1>
+{%extends 'base.html'%} {% load bootstrap4 %}{{block.super}} {{form.media}} {% block content %}
+<div class="div" style="padding:300px;background-color:rgb(0, 0, 0); background-image: url('http://cleardarksky.com/csk/getcsk.php?id=AftnCyCCA');background-size: cover">
+
+</div>
+<div class="container">
+    
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-3">
+                <a href="{{project.link}}">{{project.name}}</a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
