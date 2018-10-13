@@ -138,3 +138,11 @@ def upload(request):
     else:
         form = ProjectForm()
     return render(request, 'upload.html', {"form": form , "upload": upload})
+
+
+def profiles(request,id):
+    profile = Profile.objects.get(user_id=id)
+    post=Projects.objects.filter(user_id=id)
+   
+                       
+    return render(request,'pros.html',{"profile":profile,"post":post})
