@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator,MaxValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -30,3 +31,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+class Rates(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Projects,on_delete=models.CASCADE,related_name='likes')
+    design = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    usability = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    creativity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    content = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])

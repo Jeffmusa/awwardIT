@@ -168,3 +168,22 @@ def comment(request,id):
             comment.save()
             print(comment)
         return redirect('/')
+
+def get_post_by_id(request,id):
+        post = Projects.objects.get(id=id)
+        vote = Votes()
+        if request.method == 'POST':
+
+                vote_form = Votes(request.POST)
+                if vote_form.is_valid():
+
+                        design = vote_form.cleaned_data['design']
+                        usability = vote_form.cleaned_data['usability']
+                        content = vote_form.cleaned_data['content']
+                        creativity = vote_form.cleaned_data['creativity']
+                        rating = Rates(design=design,usability=usability,
+                                        content=content,creativity=creativity,
+                                        user=request.user,post=post)
+                        rating.save()
+                        return redirect('/')
+        return render(request,'vote.html',{"post":post,"vote":vote})

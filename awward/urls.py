@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^comment/(\d+)',views.comment,name='comment'),
     url(r'^upload/', views.upload, name='upload'),
     url(r'^search/', views.search_results, name='search_results'),
+    url(r'^one/(?P<id>\d+)',views.get_post_by_id,name='one'),
     url(r'^api/profile/$', views.ProfileList.as_view()),
     url(r'^api/projects/$', views.ProjectList.as_view()),
     url(r'api/projects/merch-id/(?P<pk>[0-9]+)/$',views.ProjectDescription.as_view()),
