@@ -12,7 +12,6 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-@login_required(login_url='/accounts/login/')
 def home(request):
     date = dt.date.today()
     # pr = Profile.objects.all()
@@ -146,3 +145,15 @@ def profiles(request,id):
    
                        
     return render(request,'pros.html',{"profile":profile,"post":post})
+
+def search_results(request):    
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        searched_projects = Projects.objects.filter(name=search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"searched_projects": searched_projects})
+
+    else:
+        message = "Please search for a valid Project"
+        return render(request, 'search.html',{"message":message})

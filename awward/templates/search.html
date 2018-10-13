@@ -1,0 +1,31 @@
+{%extends 'base.html'%} {% load bootstrap4 %}{{block.super}} {{form.media}}
+{% block content %}
+<div class="container">
+        {% if searched_projects %}
+        <h1 class="text-center">Found {{searched_projects|length}} related searches for {{message}}</h1>
+        {% else %}
+          <h2> There are no related users </h2>
+        {% endif %}
+    
+     
+    
+      
+    
+      {% for project in searched_projects %}
+    
+        <a href="/profiles/{{user.id}}" >
+      <h1 class="text-left">{{project.name}}</h1></a>
+      <img  src="{{project.profile.pro_photo.url}}"  alt="" style="border-radius:100px;height:250px;width:250px;">
+      <div class="card" style="height:280px;width:280px">
+                <!-- <img  src="{{project.screenshot.url}}"  alt="" height="250" width="250"> -->
+            </div>
+
+       </div>
+    
+    
+    
+      {% endfor %}
+      
+      
+    </div>
+    {% endblock %}
