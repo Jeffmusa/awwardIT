@@ -9,19 +9,28 @@
 
 <div class="container">
     <div class="row">
+        
         {% for project in projects %}
-<br>
+
         <div class="col-md-3">
-            <div class="card">
+            <div class="card" style="margin-bottom:10px;">
                 <div class="card-header">
                         {% if project.user.profile.pro_photo %}
-                        <section> <img style="border-radius: 50% ; padding: 0.15rem;" class=" img-circle" src="{{project.user.profile.pro_photo.url}}" alt="" width="50px" height="50px"">  <a href="/profiles/{{project.user.id}}" style="color:black"><strong> {{ project.user.username }}</strong></a></a></section>
+                        <section> <img style="border-radius: 50% ; padding: 0.15rem;" class=" img-circle" src="{{project.user.profile.pro_photo.url}}" alt="" width="50px" height="50px">  <a href="/profiles/{{project.user.id}}" style="color:black"><strong> {{ project.user.username }}</strong></a></a></section>
                         {% else %}
-                        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:70px;"> {{project.user.username }}
+                        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:50px;"> {{project.user.username }}
                          {% endif %}
-                </div>
+                        </div>
+                             <div class="text-center">
+                                 <h4>Project:{{project.name}}</h4>
+                             </div>
                 <img src="{{project.screenshot.url}}" style="height:200px;">
-                <a href="{{project.link}}">{{project.name}}</a>
+                <div class="card-footer">
+
+                    {{project.description}}
+                    <p>Link:<a href="{{project.link}}">{{project.name}}</a></p>
+                </div>
+            
             </div>
         </div>
 

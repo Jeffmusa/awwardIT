@@ -4,37 +4,53 @@
 
 
 <div class="container">
-
-  <div class="row">
-      <div class="card" >
-          `<div class="card-header">
-                <h3 class="text-center"> <strong> {{profile.user.username}} </strong><a class="btn btn-lg btn-edit" href="#" style="color:black"></a>
-          </div>
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+  <div class="card">
+    <div class="card-header">
+   <strong> {{profile.user.username}} </strong>
+   <div class="text-right">
+     {{user.profile.email}}
+   </div>
+   </div>
       {% if user.profile.pro_photo %}
-      <img src="{{profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">
+      <div class="text-center">
+
+        <img src="{{profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">
+      </div>
       {% else %}
-      <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;">
+      <div class="text-center">
+
+        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;">
+      </div>
   {% endif %}
-  <div class="row">
         {% if user.is_authenticated %}
         
    <!-- <div class="text-right">{{post|length}} projects</div>  -->
-     
-       <h3 class="text-left">{{profile.bio}}</h3>
-      </div>
-    </div>
-</div>
-   
-  </div>
+   <div class="text-right">
+
+    <strong> {{profile.bio}}</strong>
+    </div> 
+
+   </div>
+ 
        
             
               {% if post %}
                 <h1 class="text-center">{{profile.user.username}}'s Projects</h1>
        <div class="row">
                   {% for post in post %}
-                  <div class="col-md-3">
-                    <img src="{{post.screenshot.url}}" width="300px" height="300px" alt="">
+                  <div class="col-md-4">
+                    <div class="card" style="margin-bottom:20px">
+<div class="card-header">
+
+  <div class="text-center">
+    {{post.name}}
+  </div>
+                      </div>
+                      <img src="{{post.screenshot.url}}" width="349" height="349" class="text-center"  alt="" style="margin-bottom:20px;" alt="">
+                   <div class="card-footer">
+                      {{post.description}}
+                   </div>
+                    </div>
                 </div>          
                   {% endfor %}
               </div>
@@ -43,7 +59,7 @@
               <H1>PROJECTS UNDER CONSTRUCTION</H1>
               {% endif %}     
 
-</div>
 {% else %}
-  <a class='btn btn-default' href="/accounts/login">Login</a>
-{% endif %} {% endblock %}
+  <a class='btn btn-default' href="/accounts/login">Login to legally access available projects</a>
+{% endif %} 
+{% endblock %}

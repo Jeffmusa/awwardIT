@@ -14,8 +14,6 @@ from django.contrib.auth.models import User
 
 def home(request):
     date = dt.date.today()
-    # pr = Profile.objects.all()
-    # comment_form = CommentForm()
     projects = Projects.objects.all()
     return render(request, 'home.html',{"date": date,"projects":projects})
 
@@ -157,3 +155,16 @@ def search_results(request):
     else:
         message = "Please search for a valid Project"
         return render(request, 'search.html',{"message":message})
+
+
+def comment(request,id):
+    upload = Projects.objects.get(id=id)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.post= upload
+            comment.save()
+            print(comment)
+        return redirect('/')
