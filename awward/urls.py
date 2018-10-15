@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^profile/',views.profile,name = 'profile'),
     url(r'^profiles/(\d+)',views.profiles,name='profiles'),
     url(r'^comment/(\d+)',views.comment,name='comment'),
+    url(r'^review/(\d+)',views.review,name='review'),
     url(r'^upload/', views.upload, name='upload'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^one/(?P<id>\d+)',views.get_post_by_id,name='one'),

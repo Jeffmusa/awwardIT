@@ -15,7 +15,16 @@ from django.contrib.auth.models import User
 def home(request):
     date = dt.date.today()
     projects = Projects.objects.all()
-    return render(request, 'home.html',{"date": date,"projects":projects})
+    
+    comment_form = CommentForm()
+    return render(request, 'home.html',{"date": date,"projects":projects,"comment_form":comment_form})
+
+def review(request,id):
+    comment_form = CommentForm()
+    profile = Profile.objects.filter(user_id=id)
+    post = Projects.objects.get(id=id)                       
+    return render(request,'review.html',{"profile":profile,"post":post,"comment_form":comment_form})
+
 
 class ProfileList(APIView):
     def get(self, request, format=None):
@@ -164,10 +173,11 @@ def comment(request,id):
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = request.user
-            comment.post= upload
+            comment.project = upload
             comment.save()
             print(comment)
         return redirect('/')
+    return redirect('/')
 
 def get_post_by_id(request,id):
         post = Projects.objects.get(id=id)

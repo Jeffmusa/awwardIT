@@ -12,7 +12,7 @@
         
         {% for project in projects %}
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card" style="margin-bottom:10px;">
                 <div class="card-header">
                         {% if project.user.profile.pro_photo %}
@@ -25,12 +25,23 @@
                                  <h4>Project:{{project.name}}</h4>
                              </div>
                 <img src="{{project.screenshot.url}}" style="height:200px;">
+                <a href="/review/{{project.id}}" style="color:black">Reviews</a>
                 <div class="card-footer">
 
-                    {{project.description}}
+                 <small>   {{project.description}}</small>
                     <p>Link:<a href="{{project.link}}">{{project.name}}</a></p>
                 </div>
-            
+                <form id='comment' action="/comment/{{project.id}}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%} 
+                    {% bootstrap_form comment_form %}
+                    <div class="text-left">
+
+                        <!-- <input type="submit" class="btn btn-primary btn-sm" value="comment">  -->
+                    </div>
+                    <div class="text-right">
+                            <a href="/review/{{project.id}}"> view comments</a>
+                    </div>
+                </form>
             </div>
         </div>
 

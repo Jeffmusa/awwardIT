@@ -14,6 +14,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
 class Projects(models.Model):
     name = models.CharField(max_length =30,null=True)
     screenshot = models.ImageField(upload_to = 'images/',null=True)
@@ -24,6 +30,16 @@ class Projects(models.Model):
     def __str__(self):
         return self.name
 
+    def save_project(self):
+        self.save()
+
+    def delete_project(self):
+        self.delete()
+
+    class Meta:
+        ordering = ["-id"]
+
+
 class Comment(models.Model):
     comment = models.CharField(max_length =80,null=True)
     user = models.ForeignKey(User,null=True)
@@ -31,6 +47,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+    def save_comment(self):
+            self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+    class Meta:
+        ordering = ["-id"]
+
+
 
 class Rates(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
