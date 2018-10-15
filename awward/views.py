@@ -18,7 +18,7 @@ def home(request):
     
     comment_form = CommentForm()
     return render(request, 'home.html',{"date": date,"projects":projects,"comment_form":comment_form})
-
+@login_required(login_url='/accounts/login/')
 def review(request,id):
     comment_form = CommentForm()
     profile = Profile.objects.filter(user_id=id)
@@ -165,7 +165,7 @@ def search_results(request):
         message = "Please search for a valid Project"
         return render(request, 'search.html',{"message":message})
 
-
+@login_required(login_url='/accounts/login/')
 def comment(request,id):
     upload = Projects.objects.get(id=id)
     if request.method == 'POST':
