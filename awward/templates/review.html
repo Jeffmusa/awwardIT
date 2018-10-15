@@ -4,24 +4,51 @@
 <div class="container">
 
     <div class="row" style="margin-top:10px;">
-        <div class="col-md-10"><img src="{{post.screenshot.url}}" class="img-responsive" width="800" height="500" id="img" >
-           <h3>Comments</h3>
-            {% for comm in post.comments.all %}
+        <div class="col-md-10"><img src="{{project.screenshot.url}}" class="img-responsive" width="800" height="500" id="img" >
+            <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                          <form action="" method="project" enctype="multipart/form-data">
+                              {%csrf_token%}
+                            
+                              {% bootstrap_form rate %}
+                              
+                              <button class='btn btn-primary' type='submit' >rate</button>
+                            </form>
+                    </div>
+                  </div>
+                  
+            <h3>Comments</h3>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Rate
+                      </button>
+                      {% for comm in project.comments.all %}
     
-                <p><strong><a href="/profiles/{{post.user.id}}" style="color:black">{{ comm.user.username }}</a></strong>:{{comm.comment}} </p>
+                <p><strong><a href="/profiles/{{project.user.id}}" style="color:black">{{ comm.user.username }}</a></strong>:{{comm.comment}} </p>
                 {% endfor %}
-           
-            <form id='comment' action="/comment/{{post.id}}" method="post" enctype="multipart/form-data">
+               
+            <form id='comment' action="/comment/{{project.id}}" method="post" enctype="multipart/form-data">
                 {%csrf_token%} 
                 {% bootstrap_form comment_form %}
                 <input type="submit" class="btn btn-primary btn-sm" value="comment">
             </form>
+
+           
+                </p>
+              
+
+            
+
         </div>
         <div class="col-md-2" >
-    <div class="card" id="card" style="height:500px;background-color:rgb(65, 135, 240)">
-<h3 class="text-center">Rating</h3>
-<h5>Usability:</h5>
-<h5>UI:</h5>
+    <div class="card" id="card" style="height:500px;background-color:rgb(175, 201, 240)">
+<h3 class="text-center">RATING</h3>
+<h5>Usability level:5</h5>
+<br>
+<h5>Design level:10</h5>
+<br>
+<h5>Creativity level:9</h5>
+<br>
+<h5>Content level:3</h5>
         
     </div>
         </div>

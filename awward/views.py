@@ -169,32 +169,83 @@ def comment(request,id):
             comment.user = request.user
             comment.project = upload
             comment.save()
-            print(comment)
+           
         return redirect('/')
     return redirect('/')
 
 def rate_project(request,id):
         post = Projects.objects.get(id=id)
-        vote = Votes()
+        likes = Rates.objects.filter(post=post)
+        design = []
+        usability = []
+        creativity = []
+        content = []
+        for x in likes:
+                design.append(x.design)
+                usability.append(x.usability)
+                creativity.append(x.creativity)
+                content.append(x.content)
+        des = (sum(usability)/len(usability))
+        usa = (sum(creativity)/len(creativity))
+        crea = (sum(design)/len(design))
+        cont = (sum(content)/len(content))
+        print (des)
+        
+        rate = Votes()
         if request.method == 'POST':
 
-                vote_form = Votes(request.POST)
-                if vote_form.is_valid():
+                rate = Votes(request.POST)
+                if rate.is_valid():
 
-                        design = vote_form.cleaned_data['design']
-                        usability = vote_form.cleaned_data['usability']
-                        content = vote_form.cleaned_data['content']
-                        creativity = vote_form.cleaned_data['creativity']
+                        design = rate.cleaned_data['design']
+                        usability = rate.cleaned_data['usability']
+                        content = rate.cleaned_data['content']
+                        creativity = rate.cleaned_data['creativity']
                         rating = Rates(design=design,usability=usability,
                                         content=content,creativity=creativity,
                                         user=request.user,post=post)
                         rating.save()
                         return redirect('/')
-        return render(request,'home.html',{"post":post,"vote":vote})
+        return render(request,'review.html',{"post":post,"des":des,"usa":usa,"cont":cont,"crea":crea, "rate":rate})
+
+
 
 @login_required(login_url='/accounts/login/')
 def review(request,id):
-    comment_form = CommentForm()
-    profile = Profile.objects.filter(user_id=id)
-    post = Projects.objects.get(id=id)                       
-    return render(request,'review.html',{"profile":profile,"post":post,"comment_form":comment_form})
+        comment_form = CommentForm()
+        project = Projects.objects.get(id=id)
+        post = Projects.objects.get(id=id)
+        likes = Rates.objects.filter(post=post)
+        design = []
+        usability = []
+        creativity = []
+        content = []
+        for x in likes:
+                design.append(x.design)
+                usability.append(x.usability)
+                creativity.append(x.creativity)
+                content.append(x.content)
+        des = (sum(usability)*len(usability))
+        usa = (sum(creativity)*len(creativity))
+        crea = (sum(design)*len(design))
+        cont = (sum(content)*len(content))
+        # print (des)
+        rate = Votes()
+        if request.method == 'POST':
+
+                rate = Votes(request.POST)
+                if rate.is_valid():
+
+                        design = rate.cleaned_data['design']
+                        usability = rate.cleaned_data['usability']
+                        content = rate.cleaned_data['content']
+                        creativity = rate.cleaned_data['creativity']
+                        rating = Rates(design=design,usability=usability,
+                                        content=content,creativity=creativity,
+                                        user=request.user,post=post)
+                        rating.save()
+                        return redirect('/')
+        rate = Votes()
+        profile = Profile.objects.filter(user_id=id)
+                               
+        return render(request,'review.html',{"profile":profile,"project":project, "rate":rate,"comment_form":comment_form,"des":des,"usa":usa,"cont":cont,"crea":crea})

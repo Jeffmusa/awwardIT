@@ -88,3 +88,15 @@ class CommentTestClass(TestCase):
         self.Com.save()
         posts = Comment.objects.get(id=1)
         self.assertTrue(posts.comment,'kol')
+
+
+class RateTestClass(TestCase):
+
+    def setUp(self):
+        self.Rat= Rates(design='10')
+
+# Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Rat,Rates))
+
+   
