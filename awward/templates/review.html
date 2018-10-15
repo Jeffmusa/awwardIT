@@ -1,5 +1,5 @@
 {%extends 'base.html'%} {% load bootstrap4 %}{{block.super}} {{form.media}}
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% block content %}
 <div class="container">
 
@@ -18,15 +18,23 @@
             </form>
         </div>
         <div class="col-md-2" >
-    <div class="card" style="height:500px;background-color:rgb(3, 233, 22)">
+    <div class="card" id="card" style="height:500px;background-color:rgb(65, 135, 240)">
 <h3 class="text-center">Rating</h3>
 <h5>Usability:</h5>
 <h5>UI:</h5>
-<h5></h5>
         
     </div>
         </div>
         
     </div>
 </div>
+
+<style>
+@media screen and (max-width: 992px) {
+  .col {
+    width: 50%;
+  }
+}
+
+</style>
 {% endblock %}
