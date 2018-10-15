@@ -18,12 +18,6 @@ def home(request):
     
     comment_form = CommentForm()
     return render(request, 'home.html',{"date": date,"projects":projects,"comment_form":comment_form})
-@login_required(login_url='/accounts/login/')
-def review(request,id):
-    comment_form = CommentForm()
-    profile = Profile.objects.filter(user_id=id)
-    post = Projects.objects.get(id=id)                       
-    return render(request,'review.html',{"profile":profile,"post":post,"comment_form":comment_form})
 
 
 class ProfileList(APIView):
@@ -179,7 +173,7 @@ def comment(request,id):
         return redirect('/')
     return redirect('/')
 
-def get_post_by_id(request,id):
+def rate_project(request,id):
         post = Projects.objects.get(id=id)
         vote = Votes()
         if request.method == 'POST':
@@ -196,4 +190,11 @@ def get_post_by_id(request,id):
                                         user=request.user,post=post)
                         rating.save()
                         return redirect('/')
-        return render(request,'vote.html',{"post":post,"vote":vote})
+        return render(request,'home.html',{"post":post,"vote":vote})
+
+@login_required(login_url='/accounts/login/')
+def review(request,id):
+    comment_form = CommentForm()
+    profile = Profile.objects.filter(user_id=id)
+    post = Projects.objects.get(id=id)                       
+    return render(request,'review.html',{"profile":profile,"post":post,"comment_form":comment_form})
