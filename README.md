@@ -4,11 +4,11 @@ This web app is an awarding site where users submit their projects and other use
  
 ## Screenshot
 
-<img src="https://data.whicdn.com/images/279900833/original.gif">
+<img src="http://cleardarksky.com/csk/getcsk.php?id=AftnCyCCA">
     
 ## Purpose
-    The purpose of this Independent Project is to demonstrate your level of understanding of the various concepts in python django .
-    Its also a chance to make further exploration and implement extra functionality.
+The purpose of this Independent Project is to demonstrate your level of understanding of the various concepts in python django .
+Its also a chance to make further exploration and implement extra functionality.
 
 # Additional Information
     Before you start building the project, make sure you have python installed in your device.
