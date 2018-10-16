@@ -8,7 +8,7 @@
     <div class="card-header">
    <strong> {{profile.user.username}} </strong>
    <div class="text-right">
-     {{user.profile.email}}
+     {{profile.email}}
    </div>
    </div>
       {% if user.profile.pro_photo %}
@@ -25,6 +25,7 @@
         {% if user.is_authenticated %}
         
    <!-- <div class="text-right">{{post|length}} projects</div>  -->
+  
    <div class="text-right">
 
     <strong> {{profile.bio}}</strong>
