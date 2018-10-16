@@ -1,0 +1,51 @@
+{% load bootstrap4 %} 
+
+{% block styles %}
+{% bootstrap_css %}
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="sttlesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6" style="background-image:url('https://i.pinimg.com/originals/0e/10/f2/0e10f26027ee1e142d522b4e91051d55.jpg');padding:320px;">
+    
+  </div>
+  
+  <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" style="background-color:rgb(232, 171, 240);padding-bottom:66px">
+      <div class="text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="" height="8%" width="50%">
+          <h3 style="color:grey;">Sign up to see photos and videos from your friends</h3>
+      </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="text-center">Sign Up</h3>
+            </div>
+            <div class="panel-body">
+              
+  <form method="post" class="text-center">
+    {% csrf_token %}
+      {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="display: none">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+      {% endfor %}
+    <button class="btn btn-primary" type="submit">Sign up</button>
+    <div class="section">
+        <p class="forgot">Already have an account? <a href="/accounts/login">Login</a></p>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+<div class="col-md-2 col-sm-2 col-lg-2 col-xs-2"></div>
+{% endblock %}
