@@ -170,7 +170,7 @@ def comment(request,id):
             comment.project = upload
             comment.save()
            
-        return redirect('/')
+        return redirect('/comment/{upload.id}')
     return redirect('/')
 
 def rate_project(request,id):
