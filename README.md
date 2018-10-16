@@ -2,8 +2,6 @@
 awwardIT is a python app made with Django.
 This web app is an awarding site where users submit their projects and other users get to  review and rate them. 
  
-## Screenshot
-
 <img src="http://cleardarksky.com/csk/getcsk.php?id=AftnCyCCA">
     
 ## Purpose
@@ -100,7 +98,7 @@ Projects- This endpoint should return information pertaining to all the projects
 ## Built With
 
 [Python3.6.5](https://docs.python.org/3/) - Python is a programming language that lets you work quickly and integrate systems more effectively
-[Django framework](https://docs.djangoproject.com/en/2.1/) - Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design
+ [Django framework](https://docs.djangoproject.com/en/2.1/) - Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design
 [Postgresql](https://www.postgresql.org/docs/) - PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
     Versioning
     version 1.0.0
