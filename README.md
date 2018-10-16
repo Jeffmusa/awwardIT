@@ -102,7 +102,7 @@ Projects- This endpoint should return information pertaining to all the projects
 * [Postgresql](https://www.postgresql.org/docs/) - PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
     Versioning
     version 1.0.0
- [Heroku](https://dashboard.heroku.com) -For hosting the app
+* [Heroku](https://dashboard.heroku.com) -For hosting the app
 
 ## Bugs
 
