@@ -7,7 +7,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns=[
     url(r'^$',views.home,name='home'),
     url(r'^profile/',views.profile,name = 'profile'),
-    # url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup/$', views.signup, name='signup'),
     url(r'^profiles/(\d+)',views.profiles,name='profiles'),
     url(r'^comment/(\d+)',views.comment,name='comment'),
     url(r'^review/(\d+)',views.review,name='review'),

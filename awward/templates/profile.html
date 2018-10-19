@@ -1,7 +1,11 @@
 {%extends 'base.html'%} {% load bootstrap4 %}{{block.super}} {{form.media}}{% load staticfiles %} {% block content %}
 
+
+
+
+
 <div class="text-right">
-        <a href="" class="btn btn-secondary btn-rounded" data-toggle="modal" data-target="#modalLoginAvatar">Edit profile</a>
+        <a href="" class="btn btn-secondary btn-rounded" data-toggle="modal" data-target="#modal">Edit profile</a>
 </div>
 <div class="text-left">
     
@@ -9,6 +13,24 @@
 </div>
  
 <div class="container">
+
+  {% if user.profile.pro_photo %}
+             
+                {% else  %}
+           <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}} please  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Add profile</button> </section>
+           
+           <div class="collapse" id="collapseExample">
+                <div class="col-md-4">
+                
+                    <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%} {% bootstrap_form image_form %}
+                        <input type="submit" class="btn btn-success btn-lg" value="Post">
+                    </form>
+                </div>
+                    </div>
+           {% endif %} 
+
+
     {% if user.profile.pro_photo %}
     
     <div class="card">
@@ -28,24 +50,31 @@
     {% else %}
     <div class="text-center">
 
-        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;">    
+        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;"> 
+        
+        
     </div>
 </div>
     {% endif %} 
-
+    
     <!--Modal: Login with Avatar Form-->
-<div class="modal fade" id="modalLoginAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog cascading-modal modal-avatar modal-md" role="document">
             <!--Content-->
             <div class="modal-content">
     
                 <!--Header-->
                 <div class="text-center">
-                        {% if user.profile.pro_photo %}
-                        <img src="{{user.profile.pro_photo.url}}" alt="Avatar" id="img" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">    
-                        {% else %}
-                    <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="100" width="100" alt="avatar" class="rounded-circle img-responsive" style="margin-left:10px;">
-                    {% endif %} 
+                        <!-- {% if user.profile.pro_photo %}
+                        <section style="margin-right:20px;"><img src="{{user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:40px; width: 40px;">{{user.username}}</section>  
+                          {% else  %}
+                     <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}}</section>
+                      {% endif %} 
+                        < {% if user.profile.pro_photo %} -->
+                     <!-- /   <img src="{{user.profile.pro_photo.url}}" alt="Avatar" id="img" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">     --> -->
+                        <!-- {% else %} -->
+                    <!-- <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="100" width="100" alt="avatar" class="rounded-circle img-responsive" style="margin-left:10px;"> -->
+                    <!-- {% endif %}  -->
                 </div>
                 <hr>
                 <!--Body-->
@@ -78,7 +107,7 @@
 
 {% endif %}
 
-{% if posts %}
+{% if posts  %}
 <h1 class="text-center">My Projects</h1>
 <div class="row">
 
@@ -107,6 +136,8 @@
        {% else %}
        <h1 class="text-center">My Projects</h1>
        <h1>No projects</h1>
+      
+
        {% endif %}
     
 <style>

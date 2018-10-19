@@ -13,10 +13,7 @@
       
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
-            <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
+  
           <form id="demo-2" action="{% url 'search_results'%}" style="" class="form-inline my-2 my-sm-0">
               <input type="search" placeholder="Search" name="name">
             </form>
@@ -36,7 +33,8 @@
         
         <button class="btn btn-primary"><a href="/upload" style="text-decoration:none;color:beige">Submit project</a></button>
     {% else %}
-    <div class="btn btn-primary"><a href="/accounts/register" style="text-decoration:none; color:aliceblue">Register</a></div>
+    <div class="btn btn-primary"><a href="/accounts/login" style="text-decoration:none; color:aliceblue">Login</a></div>
+    <div class="btn btn-primary"><a href="/signup" style="text-decoration:none; color:aliceblue">Register</a></div>
     {% endif %}
         
             
@@ -47,7 +45,7 @@
 <hr>
 <hr>
 <hr>
-<hr>
+
 
 
       <!-- <br>
