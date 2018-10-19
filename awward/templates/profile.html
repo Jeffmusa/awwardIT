@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-        <!-- <a href="" class="btn btn-secondary btn-rounded" data-toggle="modal" data-target="#modal">Edit profile</a> -->
+     
 
 <div class="text-left">
     
@@ -28,9 +28,24 @@
 <div class="container">
 
   {% if user.profile.pro_photo %}
-             
+             ...
                 {% else  %}
-           <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}} please  </section>
+                <div class="card">
+<div class="card-header">
+        <div class="text-right">
+                {{user.username}}
+            </div>
+            <div class="text-left">
+                    {{user.email}}
+                </div>
+</div>
+                    <div class="text-center">
+                        
+                        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;"> 
+                        
+                        
+                    </div>
+                    </div>
            
          
            {% endif %} 
@@ -61,43 +76,7 @@
     </div>
 </div>
     {% endif %} 
-    
-  
-<!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog cascading-modal modal-avatar modal-md" role="document">
        
-            <div class="modal-content">
-    
-           
-                <div class="text-center"> -->
-                        <!-- {% if user.profile.pro_photo %}
-                        <section style="margin-right:20px;"><img src="{{user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:40px; width: 40px;">{{user.username}}</section>  
-                          {% else  %}
-                     <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}}</section>
-                      {% endif %} 
-                        < {% if user.profile.pro_photo %} -->
-                     <!-- /   <img src="{{user.profile.pro_photo.url}}" alt="Avatar" id="img" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">     --> -->
-                        <!-- {% else %} -->
-                    <!-- <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="100" width="100" alt="avatar" class="rounded-circle img-responsive" style="margin-left:10px;"> -->
-                    <!-- {% endif %} 
-                </div>
-                <hr>
-         
-                <div class="modal-body text-center mb-1">
-    
-                    <h5 class="mt-1 mb-2">{{user.username}}</h5>
-                    <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-                        {%csrf_token%} {% bootstrap_form image_form %}
-                        <input type="submit" class="btn btn-success btn-lg" value="Post">
-                    </form>
-                </div>
-    
-            </div>
-      
-        </div>
-    </div> -->
-  
-    
 
 <div class="text-right">
     
