@@ -4,9 +4,22 @@
 
 
 
-<div class="text-right">
-        <a href="" class="btn btn-secondary btn-rounded" data-toggle="modal" data-target="#modal">Edit profile</a>
-</div>
+<div class="text-right" style="margin-top:45px;">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Add profile</button>
+    </div>
+        <div class="collapse" id="collapseExample">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                
+                <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%} {% bootstrap_form image_form %}
+                    <input type="submit" class="btn btn-success btn-lg" value="Post">
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <!-- <a href="" class="btn btn-secondary btn-rounded" data-toggle="modal" data-target="#modal">Edit profile</a> -->
+
 <div class="text-left">
     
     <a href="/logout" class="btn btn-danger" style="text-decoration:none;">Logout</a>
@@ -17,17 +30,9 @@
   {% if user.profile.pro_photo %}
              
                 {% else  %}
-           <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}} please  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Add profile</button> </section>
+           <section style="margin-right:20px;"><img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="50" width="50" alt="avatar" class="rounded-circle img-responsive">{{user.username}} please  </section>
            
-           <div class="collapse" id="collapseExample">
-                <div class="col-md-4">
-                
-                    <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-                        {%csrf_token%} {% bootstrap_form image_form %}
-                        <input type="submit" class="btn btn-success btn-lg" value="Post">
-                    </form>
-                </div>
-                    </div>
+         
            {% endif %} 
 
 
@@ -57,14 +62,14 @@
 </div>
     {% endif %} 
     
-    <!--Modal: Login with Avatar Form-->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+<!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog cascading-modal modal-avatar modal-md" role="document">
-            <!--Content-->
+       
             <div class="modal-content">
     
-                <!--Header-->
-                <div class="text-center">
+           
+                <div class="text-center"> -->
                         <!-- {% if user.profile.pro_photo %}
                         <section style="margin-right:20px;"><img src="{{user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:40px; width: 40px;">{{user.username}}</section>  
                           {% else  %}
@@ -74,10 +79,10 @@
                      <!-- /   <img src="{{user.profile.pro_photo.url}}" alt="Avatar" id="img" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">     --> -->
                         <!-- {% else %} -->
                     <!-- <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" height="100" width="100" alt="avatar" class="rounded-circle img-responsive" style="margin-left:10px;"> -->
-                    <!-- {% endif %}  -->
+                    <!-- {% endif %} 
                 </div>
                 <hr>
-                <!--Body-->
+         
                 <div class="modal-body text-center mb-1">
     
                     <h5 class="mt-1 mb-2">{{user.username}}</h5>
@@ -88,10 +93,10 @@
                 </div>
     
             </div>
-            <!--/.Content-->
+      
         </div>
-    </div>
-    <!--Modal: Login with Avatar Form-->
+    </div> -->
+  
     
 
 <div class="text-right">
